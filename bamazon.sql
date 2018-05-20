@@ -25,3 +25,18 @@ VALUES ("Chocolate Chip Cookie", "food", 2, 100),
 ("Stand Mixer", "appliances", 300, 50),
 ("Food Processor", "appliances", 200, 50),
 ("Hot Plate", "appliances", 100, 50);
+
+SELECT * FROM products;
+
+CREATE TABLE orders(
+    order_Id INTEGER(11) AUTO_INCREMENT NOT NULL,
+    customer_name VARCHAR(120) NOT NULL,
+    product_ordered VARCHAR(120) DEFAULT 'Uncategorized',
+    delivery_address VARCHAR(200) NOT NULL,
+    quantity INTEGER(11) NOT NULL,
+    total INTEGER(11) NOT NULL,
+    order_filled BOOLEAN DEFAULT false,
+    PRIMARY KEY (order_Id)
+);
+
+SELECT * FROM orders;
