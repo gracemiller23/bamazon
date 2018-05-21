@@ -31,8 +31,9 @@ SELECT * FROM products;
 CREATE TABLE orders(
     order_Id INTEGER(11) AUTO_INCREMENT NOT NULL,
     customer_name VARCHAR(120) NOT NULL,
-    product_ordered VARCHAR(120) DEFAULT 'Uncategorized',
     delivery_address VARCHAR(200) NOT NULL,
+    product_id VARCHAR(120) NOT NULL,
+    product_ordered VARCHAR(120) DEFAULT 'Uncategorized',
     quantity INTEGER(11) NOT NULL,
     total INTEGER(11) NOT NULL,
     order_filled BOOLEAN DEFAULT false,
