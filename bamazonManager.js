@@ -71,8 +71,31 @@ function viewForSale(){
         }
 
         console.log(table1.toString());
+        managerStart();
     });
-    managerStart();
+   
+}
+
+function viewInventory(){
+
+    console.log("\n Here are the items available for purchase: \n");
+    connection.query("SELECT * FROM products", function(err, res){
+        if (err) throw err;
+        const table1 = new Table({
+            head: ["ID", "Product Name", "Price", "Department", "Stock"]
+          , colWidths: [5, 30, 8, 10, 8]
+        });
+ 
+        for (var i = 0; i< res.length; i++){
+            
+            table1.push(
+                [res[i].item_Id, res[i].product_name, res[i].price, res[i].department_name, res[i].stock_quantity ]
+            );
+        }
+        console.log("\n");
+        console.log(table1.toString());
+        console.log("\n");
+    });
 }
 
 function viewLowInventory(){
@@ -90,14 +113,16 @@ function viewLowInventory(){
                 );            
             }
         }
+        console.log("\n");
         console.log(table2.toString());
+        console.log("\n");
         managerStart();
     });
 
 }
 
 function addInventory(){
-    viewForSale();
+    viewInventory();
     setTimeout(function(){
     inquirer.prompt(
         [
@@ -162,9 +187,10 @@ function updateProduct(id, variable){
         ],
         function(err, res){
             console.log("You've updated product " + id + "by adding inventory.")
+            managerStart();
         }
     );
-    managerStart();
+  
 
 }
 
@@ -198,6 +224,7 @@ function addNewProduct(){
     var quantity = user.stock;
 
     newProduct(name, department, price, quantity);
+  
     });
     
 }
@@ -214,9 +241,10 @@ function newProduct(var1, var2, var3, var4){
         },
         function(err, res){
             console.log("\nProduct added!\n")
+            managerStart();
         }
     )
-    managerStart();
+    
 }
 
 function viewOrders(){
@@ -239,7 +267,9 @@ function viewOrders(){
                 );            
             }
         }
+        console.log("\n");
         console.log(table3.toString());
+        console.log("\n");
     });
 
 }
@@ -281,7 +311,8 @@ function orderChange(variable, id){
         ],
         function(err, res){
             console.log("You've updated order " + id + "to complete.")
+            managerStart();
         }
     );
-    managerStart();
+   
 }

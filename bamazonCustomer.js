@@ -23,7 +23,6 @@ function displayInventory(){
     console.log("\n Here are the items available for purchase: \n");
     connection.query("SELECT * FROM products", function(err, res){
         if (err) throw err;
-        console.log(res);
         console.log("\n ID  |   Product Name       | Price \n")
         for (var i = 0; i< res.length; i++){
             console.log(" " + res[i].item_Id + " | " + res[i].product_name + "   |   $" + res[i].price +"\n");
